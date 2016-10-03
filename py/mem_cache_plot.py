@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 
 
 def parse_results(path):
-
     def _retrieve_time(str_line):
         return float(str_line.split(":")[1].strip())
 
@@ -47,10 +46,31 @@ def generate_plot(data):
     return plt
 
 
-result = parse_results("/Users/akasiyanik/FPMI/Толстиков/mem_cache/logs/test2.log")
-plt1 = generate_plot(result)
-plt1.savefig("from1000to1100.png")
+def run(path_to_log_file):
+    base_filename = path_to_log_file.split("/")[-1].split(".")[0]
+    all_result = parse_results(path_to_log_file)
+    generate_plot(all_result).savefig(base_filename + "-all.png", bbox_inches='tight')
 
-result = parse_results("/Users/akasiyanik/FPMI/Толстиков/mem_cache/logs/test1.log")
-plt2 = generate_plot(result)
-plt2.savefig("from1000to2000.png")
+    simple_result = {"Simple": all_result["Simple"]}
+    generate_plot(simple_result).savefig(base_filename + "-simple.png", bbox_inches='tight')
+
+    block_result = {"Block": all_result["Block"]}
+    generate_plot(block_result).savefig(base_filename + "-block.png", bbox_inches='tight')
+
+    swapped_result = {"Swapped": all_result["Swapped"]}
+    generate_plot(swapped_result).savefig(base_filename + "-swapped.png", bbox_inches='tight')
+
+
+linux_path1 = "/home/akasiyanik/Dev/fpmi/mem-cache-lab/logs/linux-1000-1100-float.log"
+linux_path2 = "/home/akasiyanik/Dev/fpmi/mem-cache-lab/logs/linux-1000-1100-double.log"
+linux_path3 = "/home/akasiyanik/Dev/fpmi/mem-cache-lab/logs/linux-1000-2000-float.log"
+linux_path4 = "/home/akasiyanik/Dev/fpmi/mem-cache-lab/logs/linux-1000-2000-double.log"
+
+mac_path1 = "/home/akasiyanik/Dev/fpmi/mem-cache-lab/logs/mac-1000-1100-float.log"
+mac_path2 = "/home/akasiyanik/Dev/fpmi/mem-cache-lab/logs/mac-1000-2000-float.log"
+
+run(linux_path1)
+run(linux_path2)
+run(linux_path3)
+run(linux_path4)
+

@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
         MultSimple(a, b, c, n);
         const auto endTime = std::clock();
 
-        std::cerr << "timeSimple: " << double(endTime - startTime) / CLOCKS_PER_SEC << '\n';
+        std::cerr << "timeSimple: " << float(endTime - startTime) / CLOCKS_PER_SEC << '\n';
     }
 
     {
@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
         MultSimpleBlock(a, b, c, n);
         const auto endTime = std::clock();
 
-        std::cerr << "timeBlock: " << double(endTime - startTime) / CLOCKS_PER_SEC << '\n';
+        std::cerr << "timeBlock: " << float(endTime - startTime) / CLOCKS_PER_SEC << '\n';
     }
     
     {
@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
         MultSwappedLoops(a, b, c, n);
         const auto endTime = std::clock();
 
-        std::cerr << "timeSwapped: " << double(endTime - startTime) / CLOCKS_PER_SEC << '\n';
+        std::cerr << "timeSwapped: " << float(endTime - startTime) / CLOCKS_PER_SEC << '\n';
     }
     
     delete[] a;
