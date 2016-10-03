@@ -30,16 +30,11 @@ def parse_results(path):
 
 def generate_plot(data):
     ax = plt.figure(figsize=(20, 5)).add_subplot(111)
-    x_min = 0
-    x_max = 0
     for algo in data:
         keys = sorted(list(data[algo].keys()))
         values = [data[algo][key] for key in keys]
         ax.plot(keys, values)
         ax.legend([key for key in data], loc='upper left')
-
-        x_min = keys[0]
-        x_max = keys[-1]
 
     first_key = next(iter(data.keys()))
     ticks = sorted(list(data[first_key].keys()))
@@ -48,6 +43,7 @@ def generate_plot(data):
     plt.xticks(ticks, rotation='vertical')
     plt.xlabel('n')
     plt.ylabel('time, s')
+    plt.grid(True)
     return plt
 
 
