@@ -2,4 +2,4 @@
 Отчет:
 
 
-https://docs.google.com/document/d/1uU0TV_wDnkLgG4Wj_SaFxThC5rdoAOwb8o22tNfkdc8/edit
+https://github.com/aliaksei-kasiyanik/mem-cache-lab/blob/master/py/mem-cache-lab.ipynb
