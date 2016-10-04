@@ -3,6 +3,8 @@ cache-float
 cache-double
 .idea
 
+.ipynb_checkpoints
+
 # Compiled Object files
 *.slo
 *.lo
